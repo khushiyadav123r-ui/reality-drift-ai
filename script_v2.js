@@ -51,6 +51,10 @@ function analyze() {
   document.getElementById("truth").innerText =
     "Truth Drift: " + (score < 5 ? "HIGH" : "MODERATE");
 
-  document.getElementById("score").innerText =
-    "Reality Score: " + score + " / 10";
+  document.getElementById("scoreText").innerText =
+  "Reality Score: " + score + " / 10";
+
+document.getElementById("meterFill").style.width =
+  (score * 10) + "%";
+
 }
