@@ -76,4 +76,18 @@ button {
   background: red;
   transition: width 1s ease;
 }
+.card {
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 5px red; }
+  50% { box-shadow: 0 0 15px red; }
+  100% { box-shadow: 0 0 5px red; }
+}
+
+button:hover {
+  box-shadow: 0 0 15px red;
+}
 
