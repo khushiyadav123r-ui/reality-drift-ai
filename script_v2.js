@@ -1,79 +1,56 @@
 function analyze() {
-  const text = document.getElementById("contentInput").value.toLowerCase();
-  if (!text) {
-    alert("Paste content first");
+  const input = document.getElementById("contentInput").value;
+
+  if (!input || input.trim() === "") {
+    alert("Please paste some content first");
     return;
   }
 
-  const emotion = detectEmotion(text);
-  const bias = detectBias(text);
-  const expectation = detectExpectation(text);
-  const truth = detectTruth(text);
+  const text = input.toLowerCase();
 
+  // Emotion
+  let emotion = "Neutral";
+  if (text.includes("guarantee") || text.includes("profit") || text.includes("rich")) {
+    emotion = "Hype";
+  } else if (text.includes("fear") || text.includes("danger") || text.includes("destroy")) {
+    emotion = "Fear";
+  } else if (text.includes("happy") || text.includes("love") || text.includes("cute")) {
+    emotion = "Positive";
+  }
+
+  // Bias
+  let bias = "Neutral";
+  if (text.includes("buy") || text.includes("crypto") || text.includes("course")) {
+    bias = "Commercial";
+  } else if (text.includes("government") || text.includes("election")) {
+    bias = "Political";
+  }
+
+  // Expectation
+  let expectation = "Realistic Expectations";
+  if (text.includes("overnight") || text.includes("guaranteed")) {
+    expectation = "Unrealistic Expectations";
+  }
+
+  // Reality Score
+  let score = 8;
+  if (emotion === "Hype") score -= 3;
+  if (expectation === "Unrealistic Expectations") score -= 4;
+  if (score < 1) score = 1;
+
+  // Output
   document.getElementById("emotion").innerText =
-    "Emotional Drift: " + emotion.label + " (" + emotion.score + "%)";
+    "Emotional Drift: " + emotion;
 
   document.getElementById("bias").innerText =
-    "Bias: " + bias;
+    "Bias Detected: " + bias;
 
   document.getElementById("expectation").innerText =
-    expectation;
+    "Expectation Drift: " + expectation;
 
   document.getElementById("truth").innerText =
-    "Truth Drift: " + truth;
+    "Truth Drift: " + (score < 5 ? "HIGH" : "MODERATE");
 
-  const realityScore = calculateRealityScore(emotion.score, expectation);
   document.getElementById("score").innerText =
-    "Reality Score: " + realityScore + " / 10";
-}
-
-/* ---------- AI-INSPIRED LOGIC ---------- */
-
-function detectEmotion(text) {
-  if (text.match(/fear|danger|destroy|loss|threat/))
-    return { label: "Fear", score: 82 };
-
-  if (text.match(/guarantee|profit|rich|success|win|million/))
-    return { label: "Hype", score: 88 };
-
-  if (text.match(/happy|joy|cute|love|peace/))
-    return { label: "Positive", score: 70 };
-
-  if (text.match(/anger|hate|corrupt|scam/))
-    return { label: "Anger", score: 76 };
-
-  return { label: "Neutral", score: 30 };
-}
-
-function detectBias(text) {
-  if (text.match(/buy|sell|offer|crypto|course|money/))
-    return "Commercial";
-
-  if (text.match(/government|policy|election|vote/))
-    return "Political";
-
-  return "Neutral";
-}
-
-function detectExpectation(text) {
-  if (text.match(/overnight|guarantee|instant|no effort/))
-    return "Expectation Drift: Unrealistic";
-
-  return "Expectation Drift: Realistic";
-}
-
-function detectTruth(text) {
-  if (text.match(/guarantee|always|never|100%/))
-    return "HIGH";
-
-  return "MODERATE";
-}
-
-function calculateRealityScore(emotionScore, expectation) {
-  let score = 10;
-
-  if (emotionScore > 70) score -= 3;
-  if (expectation.includes("Unrealistic")) score -= 4;
-
-  return Math.max(score, 1);
+    "Reality Score: " + score + " / 10";
 }
