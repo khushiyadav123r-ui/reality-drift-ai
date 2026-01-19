@@ -9,10 +9,27 @@ async function analyze() {
 
   setLoading(true);
 
-  const emotions = await query(
-    "j-hartmann/emotion-english-distilroberta-base",
-    text
+  async function query(model, text) {
+  const noise = Math.random().toString(36).substring(7);
+
+  const response = await fetch(
+    `https://api-inference.huggingface.co/models/${model}`,
+    {
+      headers: {
+        Authorization: `Bearer ${HF_TOKEN}`,
+        "Content-Type": "application/json",
+        "x-use-cache": "false"
+      },
+      method: "POST",
+      body: JSON.stringify({
+        inputs: text + " " + noise
+      }),
+    }
   );
+
+  return await response.json();
+}
+
 
   const top3 = emotions[0].slice(0, 3);
 
