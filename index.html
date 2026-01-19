@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Reality Drift AI</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Reality Drift AI</h1>
-  <p>Project setup successful</p>
+
+  <div class="matrix-bg"></div>
+
+  <header>
+    <h1>Reality Drift AI</h1>
+    <p>Detecting Truth • Emotion • Bias • Perception Drift</p>
+  </header>
+
+  <section class="input-area">
+    <textarea id="contentInput" placeholder="Paste article, post, transcript..."></textarea>
+    <button onclick="analyze()">ANALYZE REALITY</button>
+  </section>
+
+  <section class="output">
+    <div class="card" id="truth"></div>
+    <div class="card" id="emotion"></div>
+    <div class="card" id="bias"></div>
+    <div class="card" id="expectation"></div>
+    <div class="card" id="score"></div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
