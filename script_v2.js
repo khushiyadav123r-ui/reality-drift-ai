@@ -64,4 +64,16 @@ function detectExpectation(text) {
 
 function detectTruth(text) {
   if (text.match(/guarantee|always|never|100%/))
-    return
+    return "HIGH";
+
+  return "MODERATE";
+}
+
+function calculateRealityScore(emotionScore, expectation) {
+  let score = 10;
+
+  if (emotionScore > 70) score -= 3;
+  if (expectation.includes("Unrealistic")) score -= 4;
+
+  return Math.max(score, 1);
+}
