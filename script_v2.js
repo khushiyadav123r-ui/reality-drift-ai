@@ -58,3 +58,20 @@ document.getElementById("meterFill").style.width =
   (score * 10) + "%";
 
 }
+// WELCOME TYPING EFFECT
+const text = "Analyzing how digital content shapes human perception...";
+let index = 0;
+
+function typeEffect() {
+  if (index < text.length) {
+    document.getElementById("typingText").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeEffect, 40);
+  }
+}
+typeEffect();
+
+function enterApp() {
+  document.getElementById("welcomeOverlay").style.display = "none";
+}
+
