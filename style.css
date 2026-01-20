@@ -90,4 +90,60 @@ button {
 button:hover {
   box-shadow: 0 0 15px red;
 }
+/* WELCOME OVERLAY */
+#welcomeOverlay {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-family: monospace;
+}
+
+.welcome-box {
+  text-align: center;
+  position: relative;
+}
+
+.glitch {
+  font-size: 3rem;
+  text-shadow: 0 0 10px red;
+  animation: flicker 2s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+#welcomeOverlay button {
+  margin-top: 30px;
+  padding: 10px 25px;
+  background: black;
+  color: red;
+  border: 1px solid red;
+  cursor: pointer;
+}
+
+#welcomeOverlay button:hover {
+  background: red;
+  color: black;
+}
+
+.scan-lines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,0,0,0.05),
+    rgba(255,0,0,0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+}
+
 
