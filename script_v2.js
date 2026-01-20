@@ -68,10 +68,6 @@ let interval = setInterval(() => {
 }, 120);
 
 
-document.getElementById("meterFill").style.width =
-  (score * 10) + "%";
-
-
   // AI INSIGHT
   let insight = "Content appears balanced and informative.";
 
