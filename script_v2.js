@@ -8,7 +8,7 @@ function analyze() {
 
   const text = input.toLowerCase();
 
-  // Emotion
+  // ---------------- EMOTIONAL DRIFT ----------------
   let emotion = "Neutral";
   if (text.includes("guarantee") || text.includes("profit") || text.includes("rich")) {
     emotion = "Hype";
@@ -18,7 +18,7 @@ function analyze() {
     emotion = "Positive";
   }
 
-  // Bias
+  // ---------------- BIAS DETECTION ----------------
   let bias = "Neutral";
   if (text.includes("buy") || text.includes("crypto") || text.includes("course")) {
     bias = "Commercial";
@@ -26,19 +26,19 @@ function analyze() {
     bias = "Political";
   }
 
-  // Expectation
+  // ---------------- EXPECTATION DRIFT ----------------
   let expectation = "Realistic Expectations";
   if (text.includes("overnight") || text.includes("guaranteed")) {
     expectation = "Unrealistic Expectations";
   }
 
-  // Reality Score
+  // ---------------- REALITY SCORE LOGIC ----------------
   let score = 8;
   if (emotion === "Hype") score -= 3;
   if (expectation === "Unrealistic Expectations") score -= 4;
   if (score < 1) score = 1;
 
-  // Output
+  // ---------------- OUTPUT CARDS ----------------
   document.getElementById("emotion").innerText =
     "Emotional Drift: " + emotion;
 
@@ -51,24 +51,30 @@ function analyze() {
   document.getElementById("truth").innerText =
     "Truth Drift: " + (score < 5 ? "HIGH" : "MODERATE");
 
-  // SCORE COUNT-UP ANIMATION
-let currentScore = 0;
-let scoreText = document.getElementById("scoreText");
-let meter = document.getElementById("meterFill");
+  // ---------------- SCORE COUNT-UP ANIMATION (SAFE) ----------------
+  let currentScore = 0;
+  let scoreText = document.getElementById("scoreText");
+  let meter = document.getElementById("meterFill");
 
-let interval = setInterval(() => {
-  if (currentScore >= score) {
-    clearInterval(interval);
-  } else {
-    currentScore++;
-    scoreText.innerText =
-      "Reality Score: " + currentScore + " / 10";
-    meter.style.width = (currentScore * 10) + "%";
-  }
-}, 120);
+  // Reset UI
+  meter.style.width = "0%";
+  scoreText.innerText = "Reality Score: 0 / 10";
 
+  // Stop previous animation if exists
+  if (window.scoreInterval) clearInterval(window.scoreInterval);
 
-  // AI INSIGHT
+  window.scoreInterval = setInterval(() => {
+    if (currentScore >= score) {
+      clearInterval(window.scoreInterval);
+    } else {
+      currentScore++;
+      scoreText.innerText =
+        "Reality Score: " + currentScore + " / 10";
+      meter.style.width = (currentScore * 10) + "%";
+    }
+  }, 120);
+
+  // ---------------- AI INSIGHT ----------------
   let insight = "Content appears balanced and informative.";
 
   if (score <= 3) {
@@ -80,20 +86,20 @@ let interval = setInterval(() => {
   document.getElementById("aiInsight").innerText = insight;
 }
 
-// WELCOME TYPING EFFECT
-const text = "Analyzing how digital content shapes human perception...";
+// ---------------- WELCOME TYPING EFFECT ----------------
+const welcomeText = "Analyzing how digital content shapes human perception...";
 let index = 0;
 
 function typeEffect() {
-  if (index < text.length) {
-    document.getElementById("typingText").innerHTML += text.charAt(index);
+  if (index < welcomeText.length) {
+    document.getElementById("typingText").innerHTML += welcomeText.charAt(index);
     index++;
     setTimeout(typeEffect, 40);
   }
 }
 typeEffect();
 
+// ---------------- ENTER APP FUNCTION ----------------
 function enterApp() {
   document.getElementById("welcomeOverlay").style.display = "none";
 }
-
