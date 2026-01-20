@@ -58,6 +58,17 @@ document.getElementById("meterFill").style.width =
   (score * 10) + "%";
 
 }
+  // AI INSIGHT
+  let insight = "Content appears balanced and informative.";
+
+  if (score <= 3) {
+    insight = "High emotional and expectation manipulation detected.";
+  } else if (score <= 6) {
+    insight = "Moderate influence patterns found.";
+  }
+
+  document.getElementById("aiInsight").innerText = insight;
+
 // WELCOME TYPING EFFECT
 const text = "Analyzing how digital content shapes human perception...";
 let index = 0;
