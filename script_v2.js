@@ -57,7 +57,7 @@ function analyze() {
 document.getElementById("meterFill").style.width =
   (score * 10) + "%";
 
-}
+
   // AI INSIGHT
   let insight = "Content appears balanced and informative.";
 
@@ -68,6 +68,7 @@ document.getElementById("meterFill").style.width =
   }
 
   document.getElementById("aiInsight").innerText = insight;
+}
 
 // WELCOME TYPING EFFECT
 const text = "Analyzing how digital content shapes human perception...";
