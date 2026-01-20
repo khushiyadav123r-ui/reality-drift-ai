@@ -51,8 +51,22 @@ function analyze() {
   document.getElementById("truth").innerText =
     "Truth Drift: " + (score < 5 ? "HIGH" : "MODERATE");
 
-  document.getElementById("scoreText").innerText =
-  "Reality Score: " + score + " / 10";
+  // SCORE COUNT-UP ANIMATION
+let currentScore = 0;
+let scoreText = document.getElementById("scoreText");
+let meter = document.getElementById("meterFill");
+
+let interval = setInterval(() => {
+  if (currentScore >= score) {
+    clearInterval(interval);
+  } else {
+    currentScore++;
+    scoreText.innerText =
+      "Reality Score: " + currentScore + " / 10";
+    meter.style.width = (currentScore * 10) + "%";
+  }
+}, 120);
+
 
 document.getElementById("meterFill").style.width =
   (score * 10) + "%";
