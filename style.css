@@ -145,5 +145,17 @@ button:hover {
   );
   pointer-events: none;
 }
+/* SCORE COLOR LOGIC */
+.low-score {
+  color: #ff3b3b;
+}
+
+.medium-score {
+  color: #ffcc00;
+}
+
+.high-score {
+  color: #00ff9c;
+}
 
 
