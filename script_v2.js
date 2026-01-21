@@ -69,7 +69,19 @@ function analyze() {
     } else {
       currentScore++;
       scoreText.innerText =
-        "Reality Score: " + currentScore + " / 10";
+  "Reality Score: " + currentScore + " / 10";
+
+// COLOR LOGIC
+scoreText.classList.remove("low-score", "medium-score", "high-score");
+
+if (currentScore <= 3) {
+  scoreText.classList.add("low-score");
+} else if (currentScore <= 6) {
+  scoreText.classList.add("medium-score");
+} else {
+  scoreText.classList.add("high-score");
+}
+
       meter.style.width = (currentScore * 10) + "%";
     }
   }, 120);
