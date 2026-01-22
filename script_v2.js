@@ -96,6 +96,24 @@ if (currentScore <= 3) {
   }
 
   document.getElementById("aiInsight").innerText = insight;
+  // FINAL TRUST INDICATOR
+let trustText = document.getElementById("trustText");
+let trustCard = document.getElementById("trustCard");
+
+// reset previous state
+trustCard.classList.remove("trust-safe", "trust-warning", "trust-danger");
+
+if (score <= 3) {
+  trustText.innerText = "❌ Highly Manipulative Content";
+  trustCard.classList.add("trust-danger");
+} else if (score <= 6) {
+  trustText.innerText = "⚠️ Use With Caution";
+  trustCard.classList.add("trust-warning");
+} else {
+  trustText.innerText = "✅ Generally Trustworthy";
+  trustCard.classList.add("trust-safe");
+}
+
 }
 
 // ---------------- WELCOME TYPING EFFECT ----------------
