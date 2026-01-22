@@ -33,23 +33,32 @@
   </section>
 
   <section class="output">
-    <div class="card" id="truth"></div>
-    <div class="card" id="emotion"></div>
-    <div class="card" id="bias"></div>
-    <div class="card" id="expectation"></div>
-    <div class="card">
-      <div class="card">
-  <h3>AI Insight</h3>
-  <p id="aiInsight">—</p>
-</div>
+  <div class="card" id="truth"></div>
+  <div class="card" id="emotion"></div>
+  <div class="card" id="bias"></div>
+  <div class="card" id="expectation"></div>
 
-  <div id="scoreText"></div>
-  <div class="meter">
-    <div id="meterFill"></div>
+  <!-- AI Insight -->
+  <div class="card">
+    <h3>AI Insight</h3>
+    <p id="aiInsight">—</p>
   </div>
-</div>
 
-  </section>
+  <!-- Trust Indicator (PASTE HERE) -->
+  <div class="card trust-card" id="trustCard">
+    <h3>Final Trust Indicator</h3>
+    <p id="trustText">—</p>
+  </div>
+
+  <!-- Score Meter -->
+  <div class="card">
+    <div id="scoreText"></div>
+    <div class="meter">
+      <div id="meterFill"></div>
+    </div>
+  </div>
+</section>
+
 
   <script src="script_v2.js"></script>
 
