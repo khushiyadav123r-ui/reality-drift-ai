@@ -230,6 +230,16 @@ button:hover {
   60% { text-shadow: -2px 2px magenta; }
   100% { text-shadow: 2px 2px red; }
 }
+@keyframes pulse {
+  0% { box-shadow: 0 0 5px currentColor; }
+  50% { box-shadow: 0 0 20px currentColor; }
+  100% { box-shadow: 0 0 5px currentColor; }
+}
+
+#meterFill {
+  animation: pulse 1.5s infinite;
+}
+
 
 
 
