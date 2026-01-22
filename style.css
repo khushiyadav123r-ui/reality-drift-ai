@@ -177,6 +177,20 @@ button:hover {
   color: #ff0033;
   box-shadow: 0 0 15px #ff0033;
 }
+.output {
+  perspective: 1200px;
+}
+
+.card {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: rotateX(6deg) rotateY(-6deg) scale(1.02);
+  box-shadow: 0 0 25px rgba(0,255,255,0.25);
+}
+
 
 
 .high-score {
