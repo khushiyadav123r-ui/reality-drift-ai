@@ -218,5 +218,18 @@ button:hover {
 .high-score {
   color: #00ff9c;
 }
+.glitch {
+  position: relative;
+  animation: glitch 1.5s infinite;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 2px 2px red; }
+  20% { text-shadow: -2px -2px cyan; }
+  40% { text-shadow: 2px -2px lime; }
+  60% { text-shadow: -2px 2px magenta; }
+  100% { text-shadow: 2px 2px red; }
+}
+
 
 
