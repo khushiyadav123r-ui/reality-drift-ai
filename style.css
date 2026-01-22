@@ -153,6 +153,31 @@ button:hover {
 .medium-score {
   color: #ffcc00;
 }
+/* TRUST INDICATOR STYLES */
+.trust-card {
+  border: 2px solid #444;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.trust-safe {
+  border-color: #00ff99;
+  color: #00ff99;
+  box-shadow: 0 0 15px #00ff99;
+}
+
+.trust-warning {
+  border-color: #ffcc00;
+  color: #ffcc00;
+  box-shadow: 0 0 15px #ffcc00;
+}
+
+.trust-danger {
+  border-color: #ff0033;
+  color: #ff0033;
+  box-shadow: 0 0 15px #ff0033;
+}
+
 
 .high-score {
   color: #00ff9c;
