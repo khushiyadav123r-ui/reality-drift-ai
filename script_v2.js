@@ -28,9 +28,17 @@ function analyze() {
 
   // ---------------- EXPECTATION DRIFT ----------------
   let expectation = "Realistic Expectations";
-  if (text.includes("overnight") || text.includes("guaranteed")) {
-    expectation = "Unrealistic Expectations";
-  }
+
+if (
+  text.includes("overnight") ||
+  text.includes("guaranteed") ||
+  text.includes("quickly") ||
+  text.includes("fast") ||
+  text.includes("change your life")
+) {
+  expectation = "Unrealistic Expectations";
+}
+
 
   // ---------------- REALITY SCORE LOGIC ----------------
   let score = 8;
