@@ -1,4 +1,9 @@
 function analyze() {
+  document.getElementById("scanOverlay").style.animation = "none";
+setTimeout(() => {
+  document.getElementById("scanOverlay").style.animation = "scan 1s linear";
+}, 10);
+
   const input = document.getElementById("contentInput").value;
 
   if (!input || input.trim() === "") {
