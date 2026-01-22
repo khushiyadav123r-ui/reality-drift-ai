@@ -43,7 +43,9 @@ if (
   // ---------------- REALITY SCORE LOGIC ----------------
   let score = 8;
   if (emotion === "Hype") score -= 3;
-  if (expectation === "Unrealistic Expectations") score -= 4;
+if (expectation === "Unrealistic Expectations") score -= 3;
+if (bias === "Commercial") score -= 2;
+
   if (score < 1) score = 1;
 
   // ---------------- OUTPUT CARDS ----------------
