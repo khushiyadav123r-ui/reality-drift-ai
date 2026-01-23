@@ -1,8 +1,14 @@
+// ================= ANALYZE FUNCTION =================
 function analyze() {
-  document.getElementById("scanOverlay").style.animation = "none";
-setTimeout(() => {
-  document.getElementById("scanOverlay").style.animation = "scan 1s linear";
-}, 10);
+
+  // SAFE SCAN OVERLAY
+  const scan = document.getElementById("scanOverlay");
+  if (scan) {
+    scan.style.animation = "none";
+    setTimeout(() => {
+      scan.style.animation = "scan 1s linear";
+    }, 10);
+  }
 
   const input = document.getElementById("contentInput").value;
 
@@ -33,49 +39,38 @@ setTimeout(() => {
 
   // ---------------- EXPECTATION DRIFT ----------------
   let expectation = "Realistic Expectations";
+  if (
+    text.includes("overnight") ||
+    text.includes("guaranteed") ||
+    text.includes("quickly") ||
+    text.includes("fast") ||
+    text.includes("change your life")
+  ) {
+    expectation = "Unrealistic Expectations";
+  }
 
-if (
-  text.includes("overnight") ||
-  text.includes("guaranteed") ||
-  text.includes("quickly") ||
-  text.includes("fast") ||
-  text.includes("change your life")
-) {
-  expectation = "Unrealistic Expectations";
-}
-
-
-  // ---------------- REALITY SCORE LOGIC ----------------
+  // ---------------- REALITY SCORE ----------------
   let score = 8;
   if (emotion === "Hype") score -= 3;
-if (expectation === "Unrealistic Expectations") score -= 3;
-if (bias === "Commercial") score -= 2;
-
+  if (expectation === "Unrealistic Expectations") score -= 3;
+  if (bias === "Commercial") score -= 2;
   if (score < 1) score = 1;
 
-  // ---------------- OUTPUT CARDS ----------------
-  document.getElementById("emotion").innerText =
-    "Emotional Drift: " + emotion;
-
-  document.getElementById("bias").innerText =
-    "Bias Detected: " + bias;
-
-  document.getElementById("expectation").innerText =
-    "Expectation Drift: " + expectation;
-
+  // ---------------- OUTPUT ----------------
+  document.getElementById("emotion").innerText = "Emotional Drift: " + emotion;
+  document.getElementById("bias").innerText = "Bias Detected: " + bias;
+  document.getElementById("expectation").innerText = "Expectation Drift: " + expectation;
   document.getElementById("truth").innerText =
     "Truth Drift: " + (score < 5 ? "HIGH" : "MODERATE");
 
-  // ---------------- SCORE COUNT-UP ANIMATION (SAFE) ----------------
+  // ---------------- SCORE ANIMATION ----------------
   let currentScore = 0;
-  let scoreText = document.getElementById("scoreText");
-  let meter = document.getElementById("meterFill");
+  const scoreText = document.getElementById("scoreText");
+  const meter = document.getElementById("meterFill");
 
-  // Reset UI
   meter.style.width = "0%";
   scoreText.innerText = "Reality Score: 0 / 10";
 
-  // Stop previous animation if exists
   if (window.scoreInterval) clearInterval(window.scoreInterval);
 
   window.scoreInterval = setInterval(() => {
@@ -83,56 +78,54 @@ if (bias === "Commercial") score -= 2;
       clearInterval(window.scoreInterval);
     } else {
       currentScore++;
-      scoreText.innerText =
-  "Reality Score: " + currentScore + " / 10";
 
-// COLOR LOGIC
-scoreText.classList.remove("low-score", "medium-score", "high-score");
+      scoreText.innerText = `Reality Score: ${currentScore} / 10`;
+      meter.style.width = currentScore * 10 + "%";
 
-if (currentScore <= 3) {
-  scoreText.classList.add("low-score");
-} else if (currentScore <= 6) {
-  scoreText.classList.add("medium-score");
-} else {
-  scoreText.classList.add("high-score");
-}
+      scoreText.classList.remove("low-score", "medium-score", "high-score");
 
-      meter.style.width = (currentScore * 10) + "%";
+      if (currentScore <= 3) {
+        scoreText.classList.add("low-score");
+      } else if (currentScore <= 6) {
+        scoreText.classList.add("medium-score");
+      } else {
+        scoreText.classList.add("high-score");
+      }
     }
   }, 120);
 
   // ---------------- AI INSIGHT ----------------
   let insight = "Content appears balanced and informative.";
-
   if (score <= 3) {
     insight = "High emotional and expectation manipulation detected.";
   } else if (score <= 6) {
     insight = "Moderate influence patterns found.";
   }
-
   document.getElementById("aiInsight").innerText = insight;
-  // FINAL TRUST INDICATOR
-let trustText = document.getElementById("trustText");
-let trustCard = document.getElementById("trustCard");
 
-// reset previous state
-trustCard.classList.remove("trust-safe", "trust-warning", "trust-danger");
+  // ---------------- TRUST INDICATOR ----------------
+  const trustText = document.getElementById("trustText");
+  const trustCard = document.getElementById("trustCard");
 
-if (score <= 3) {
-  trustText.innerText = "❌ Highly Manipulative Content";
-  trustCard.classList.add("trust-danger");
-} else if (score <= 6) {
-  trustText.innerText = "⚠️ Use With Caution";
-  trustCard.classList.add("trust-warning");
-} else {
-  trustText.innerText = "✅ Generally Trustworthy";
-  trustCard.classList.add("trust-safe");
+  if (trustCard && trustText) {
+    trustCard.classList.remove("trust-safe", "trust-warning", "trust-danger");
+
+    if (score <= 3) {
+      trustText.innerText = "❌ Highly Manipulative Content";
+      trustCard.classList.add("trust-danger");
+    } else if (score <= 6) {
+      trustText.innerText = "⚠️ Use With Caution";
+      trustCard.classList.add("trust-warning");
+    } else {
+      trustText.innerText = "✅ Generally Trustworthy";
+      trustCard.classList.add("trust-safe");
+    }
+  }
 }
 
-}
-
-// ---------------- WELCOME TYPING EFFECT ----------------
-const welcomeText = "Analyzing how digital content shapes human perception...";
+// ================= WELCOME TYPING =================
+const welcomeText =
+  "Analyzing how digital content shapes human perception...";
 let index = 0;
 
 function typeEffect() {
@@ -144,33 +137,30 @@ function typeEffect() {
 }
 typeEffect();
 
-// ---------------- ENTER APP FUNCTION ----------------
+// ================= ENTER APP =================
 function enterApp() {
   document.getElementById("welcomeOverlay").style.display = "none";
+
   document.querySelectorAll(".card").forEach(card => {
-  card.addEventListener("mousemove", e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    card.addEventListener("mousemove", e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-    const rotateX = ((y / rect.height) - 0.5) * 10;
-    const rotateY = ((x / rect.width) - 0.5) * -10;
+      const rotateX = ((y / rect.height) - 0.5) * 10;
+      const rotateY = ((x / rect.width) - 0.5) * -10;
 
-    card.style.transform =
-      `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+      card.style.transform =
+        `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "rotateX(0) rotateY(0) scale(1)";
+    });
   });
-
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "rotateX(0) rotateY(0) scale(1)";
-  });
-});
-  function enterHome() {
-  document.getElementById("homeOverlay").style.display = "none";
 }
+
+// ================= ENTER HOME =================
 function enterHome() {
   document.getElementById("homeOverlay").style.display = "none";
-  document.getElementById("analyzeBtn").disabled = false;
-}
-
-
 }
