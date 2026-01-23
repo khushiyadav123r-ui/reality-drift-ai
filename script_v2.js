@@ -1,4 +1,6 @@
 function analyze() {
+  document.getElementById("homeOverlay").style.display = "none";
+
   document.getElementById("scanOverlay").style.animation = "none";
 setTimeout(() => {
   document.getElementById("scanOverlay").style.animation = "scan 1s linear";
