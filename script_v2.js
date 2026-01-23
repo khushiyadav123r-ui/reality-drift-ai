@@ -164,5 +164,9 @@ function enterApp() {
     card.style.transform = "rotateX(0) rotateY(0) scale(1)";
   });
 });
+  function enterHome() {
+  document.getElementById("homeOverlay").style.display = "none";
+}
+
 
 }
