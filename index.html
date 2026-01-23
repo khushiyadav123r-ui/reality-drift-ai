@@ -3,83 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <title>Reality Drift AI</title>
+
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <!-- WELCOME OVERLAY -->
+
+<!-- ================= WELCOME OVERLAY ================= -->
 <div id="welcomeOverlay">
   <div class="welcome-box">
     <h1 class="glitch">REALITY SENTINEL</h1>
     <p id="typingText"></p>
-
     <div class="scan-lines"></div>
-
     <button onclick="enterApp()">ENTER ANALYSIS</button>
   </div>
 </div>
 
-
-  <div class="matrix-bg"></div>
-
-  <header>
-    <h1>Reality Drift AI</h1>
-    <p>Detecting Truth • Emotion • Bias • Perception Drift</p>
-  </header>
-
-  <section class="input-area">
-    <textarea id="contentInput" placeholder="Paste article, post, transcript..."></textarea>
-    <button onclick="analyze()">ANALYZE REALITY</button>
-  </section>
-
- <section class="output">
-
-  <div class="card" id="truth">
-    <h3>Truth Drift</h3>
-    <p>Measures how far content deviates from factual reality.</p>
-  </div>
-
-  <div class="card" id="emotion">
-    <h3>Emotional Drift</h3>
-    <p>Detects emotions used to influence perception.</p>
-  </div>
-
-  <div class="card" id="bias">
-    <h3>Bias Detection</h3>
-    <p>Identifies commercial, political, or ideological bias.</p>
-  </div>
-
-  <div class="card" id="expectation">
-    <h3>Expectation Drift</h3>
-    <p>Checks for unrealistic promises or outcomes.</p>
-  </div>
-
-
-  <!-- AI Insight -->
-  <div class="card">
-    <h3>AI Insight</h3>
-    <p id="aiInsight">—</p>
-  </div>
-
-  <!-- Trust Indicator (PASTE HERE) -->
-  <div class="card trust-card" id="trustCard">
-    <h3>Final Trust Indicator</h3>
-    <p id="trustText">—</p>
-  </div>
-
-  <!-- Score Meter -->
-  <div class="card">
-    <div id="scoreText"></div>
-    <div class="meter">
-      <div id="meterFill"></div>
-    </div>
-  </div>
-</section>
-
-
-  <script src="script_v2.js"></script>
-<div id="scanOverlay"></div>
-  <!-- HOMEPAGE OVERLAY -->
+<!-- ================= HOME OVERLAY ================= -->
 <div id="homeOverlay">
   <div class="home-box">
     <h1 class="glitch">REALITY SENTINEL AI</h1>
@@ -98,11 +39,73 @@
     <button onclick="enterHome()">START ANALYSIS</button>
   </div>
 </div>
-  <button onclick="analyze()" id="analyzeBtn" disabled>
-  ANALYZE REALITY
-</button>
 
+<!-- ================= BACKGROUND ================= -->
+<div class="matrix-bg"></div>
+<div id="scanOverlay"></div>
 
+<!-- ================= HEADER ================= -->
+<header>
+  <h1>Reality Drift AI</h1>
+  <p>Detecting Truth • Emotion • Bias • Perception Drift</p>
+</header>
+
+<!-- ================= INPUT ================= -->
+<section class="input-area">
+  <textarea
+    id="contentInput"
+    placeholder="Paste article, post, transcript..."
+  ></textarea>
+
+  <button onclick="analyze()">
+    ANALYZE REALITY
+  </button>
+</section>
+
+<!-- ================= OUTPUT ================= -->
+<section class="output">
+
+  <div class="card" id="truth">
+    <h3>Truth Drift</h3>
+    <p>Measures deviation from factual reality.</p>
+  </div>
+
+  <div class="card" id="emotion">
+    <h3>Emotional Drift</h3>
+    <p>Detects emotional manipulation.</p>
+  </div>
+
+  <div class="card" id="bias">
+    <h3>Bias Detection</h3>
+    <p>Identifies hidden influence.</p>
+  </div>
+
+  <div class="card" id="expectation">
+    <h3>Expectation Drift</h3>
+    <p>Finds unrealistic promises.</p>
+  </div>
+
+  <div class="card">
+    <h3>AI Insight</h3>
+    <p id="aiInsight">—</p>
+  </div>
+
+  <div class="card trust-card" id="trustCard">
+    <h3>Final Trust Indicator</h3>
+    <p id="trustText">—</p>
+  </div>
+
+  <div class="card">
+    <div id="scoreText">Reality Score: —</div>
+    <div class="meter">
+      <div id="meterFill"></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= SCRIPT ================= -->
+<script src="script_v2.js"></script>
 
 </body>
 </html>
