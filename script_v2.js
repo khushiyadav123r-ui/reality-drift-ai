@@ -12,7 +12,6 @@ function typeEffect() {
     setTimeout(typeEffect, 40);
   }
 }
-
 typeEffect();
 
 /* ---------------- ENTER APP (WELCOME OVERLAY) ---------------- */
@@ -24,12 +23,7 @@ function enterApp() {
 /* ---------------- ENTER HOME (HOMEPAGE OVERLAY) ---------------- */
 function enterHome() {
   const home = document.getElementById("homeOverlay");
-  if (home) {
-    home.style.display = "none";
-  }
-
-  document.body.style.overflow = "auto";
-}
+  if (home) home.style.display = "none";
 
   const analyzeBtn = document.getElementById("analyzeBtn");
   if (analyzeBtn) analyzeBtn.disabled = false;
@@ -37,8 +31,8 @@ function enterHome() {
 
 /* ---------------- MAIN ANALYSIS FUNCTION ---------------- */
 function analyze() {
-
   const inputEl = document.getElementById("contentInput");
+
   if (!inputEl || inputEl.value.trim() === "") {
     alert("Please paste some content first");
     return;
@@ -84,16 +78,16 @@ function analyze() {
 
   /* -------- OUTPUT TEXT -------- */
   document.getElementById("emotion").innerHTML =
-    "<h3>Emotional Drift</h3><p>" + emotion + "</p>";
+    `<h3>Emotional Drift</h3><p>${emotion}</p>`;
 
   document.getElementById("bias").innerHTML =
-    "<h3>Bias Detection</h3><p>" + bias + "</p>";
+    `<h3>Bias Detection</h3><p>${bias}</p>`;
 
   document.getElementById("expectation").innerHTML =
-    "<h3>Expectation Drift</h3><p>" + expectation + "</p>";
+    `<h3>Expectation Drift</h3><p>${expectation}</p>`;
 
   document.getElementById("truth").innerHTML =
-    "<h3>Truth Drift</h3><p>" + (score <= 4 ? "HIGH" : "MODERATE") + "</p>";
+    `<h3>Truth Drift</h3><p>${score <= 4 ? "HIGH" : "MODERATE"}</p>`;
 
   /* -------- SCORE ANIMATION -------- */
   let current = 0;
@@ -122,7 +116,6 @@ function analyze() {
   } else if (score <= 6) {
     insight = "Moderate influence patterns found.";
   }
-
   document.getElementById("aiInsight").innerText = insight;
 
   /* -------- TRUST INDICATOR -------- */
