@@ -24,7 +24,12 @@ function enterApp() {
 /* ---------------- ENTER HOME (HOMEPAGE OVERLAY) ---------------- */
 function enterHome() {
   const home = document.getElementById("homeOverlay");
-  if (home) home.style.display = "none";
+  if (home) {
+    home.style.display = "none";
+  }
+
+  document.body.style.overflow = "auto";
+}
 
   const analyzeBtn = document.getElementById("analyzeBtn");
   if (analyzeBtn) analyzeBtn.disabled = false;
@@ -32,7 +37,6 @@ function enterHome() {
 
 /* ---------------- MAIN ANALYSIS FUNCTION ---------------- */
 function analyze() {
-  alert("Analyze button clicked ✔");
 
   const inputEl = document.getElementById("contentInput");
   if (!inputEl || inputEl.value.trim() === "") {
