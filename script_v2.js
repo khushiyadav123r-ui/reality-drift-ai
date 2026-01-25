@@ -23,30 +23,20 @@ function enterApp() {
 /* ---------------- ENTER HOME (HOMEPAGE OVERLAY) ---------------- */
 function enterHome() {
   const home = document.getElementById("homeOverlay");
-  if (home) {
-    home.style.display = "none";
-    home.style.pointerEvents = "none";
-  }
+  if (home) home.style.display = "none";
 
-  document.body.style.overflow = "auto";
+  const analyzeBtn = document.getElementById("analyzeBtn");
+  if (analyzeBtn) analyzeBtn.disabled = false;
 }
-
 
 /* ---------------- MAIN ANALYSIS FUNCTION ---------------- */
 function analyze() {
-  document.getElementById("logContent").innerHTML = "";
-addLog("🧠 Initializing analysis engine...");
-
   const inputEl = document.getElementById("contentInput");
 
   if (!inputEl || inputEl.value.trim() === "") {
     alert("Please paste some content first");
     return;
   }
-const hint = document.getElementById("assistantHint");
-if (hint) {
-  hint.innerText = "🧠 Analyzing content for emotion, bias, and reality drift...";
-}
 
   const text = inputEl.value.toLowerCase();
 
@@ -59,8 +49,6 @@ if (hint) {
   } else if (text.includes("love") || text.includes("happy")) {
     emotion = "Positive";
   }
-  addLog("❤️ Emotional signals analyzed → " + emotion);
-
 
   /* -------- BIAS DETECTION -------- */
   let bias = "Neutral";
@@ -69,7 +57,6 @@ if (hint) {
   } else if (text.includes("government") || text.includes("election")) {
     bias = "Political";
   }
-addLog("⚠️ Bias patterns detected → " + bias);
 
   /* -------- EXPECTATION DRIFT -------- */
   let expectation = "Realistic Expectations";
@@ -81,8 +68,6 @@ addLog("⚠️ Bias patterns detected → " + bias);
   ) {
     expectation = "Unrealistic Expectations";
   }
-  addLog("🎯 Expectation realism evaluated → " + expectation);
-
 
   /* -------- REALITY SCORE -------- */
   let score = 8;
@@ -90,8 +75,6 @@ addLog("⚠️ Bias patterns detected → " + bias);
   if (bias === "Commercial") score -= 2;
   if (expectation === "Unrealistic Expectations") score -= 3;
   if (score < 1) score = 1;
-  addLog("📊 Calculating Reality Score...");
-
 
   /* -------- OUTPUT TEXT -------- */
   document.getElementById("emotion").innerHTML =
@@ -151,49 +134,4 @@ addLog("⚠️ Bias patterns detected → " + bias);
     trustText.innerText = "✅ Generally Trustworthy";
     trustCard.classList.add("trust-safe");
   }
-  addLog("✅ Analysis complete. Trust level generated.");
-
-  if (hint) {
-  hint.innerText = "✅ Analysis complete. Review each card to understand the results.";
-}
-
-  // FIRST TIME GUIDE (SHOW ONCE)
-window.onload = () => {
-  const guide = document.getElementById("guideOverlay");
-
-  if (guide && !sessionStorage.getItem("guideShown")) {
-    guide.style.display = "flex";
-    guide.style.pointerEvents = "auto";
-    document.body.style.overflow = "hidden";
-  }
-};
-
-function closeGuide() {
-  const guide = document.getElementById("guideOverlay");
-
-  if (guide) {
-    guide.style.display = "none";
-    guide.style.pointerEvents = "none";
-  }
-
-  document.body.style.overflow = "auto";
-  sessionStorage.setItem("guideShown", "yes");
-}
-const hint = document.getElementById("assistantHint");
-if (hint) {
-  hint.innerText = "💡 Tip: Try pasting a news article, ad copy, or viral post.";
-}
-  function addLog(message) {
-  const log = document.getElementById("logContent");
-  if (!log) return;
-
-  const p = document.createElement("p");
-  p.textContent = message;
-  log.appendChild(p);
-  log.scrollTop = log.scrollHeight;
-}
-
-
-
-
 }
