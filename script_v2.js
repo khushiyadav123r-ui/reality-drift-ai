@@ -168,6 +168,16 @@ const hint = document.getElementById("assistantHint");
 if (hint) {
   hint.innerText = "💡 Tip: Try pasting a news article, ad copy, or viral post.";
 }
+  function addLog(message) {
+  const log = document.getElementById("logContent");
+  if (!log) return;
+
+  const p = document.createElement("p");
+  p.textContent = message;
+  log.appendChild(p);
+  log.scrollTop = log.scrollHeight;
+}
+
 
 
 
