@@ -138,6 +138,10 @@ if (hint) {
     trustText.innerText = "✅ Generally Trustworthy";
     trustCard.classList.add("trust-safe");
   }
+  if (hint) {
+  hint.innerText = "✅ Analysis complete. Review each card to understand the results.";
+}
+
   // FIRST TIME GUIDE (SHOW ONCE)
 window.onload = () => {
   const guide = document.getElementById("guideOverlay");
