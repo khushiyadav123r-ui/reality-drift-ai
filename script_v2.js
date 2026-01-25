@@ -131,4 +131,18 @@ function analyze() {
   }
 
   addLog("✅ Analysis complete. Trust level generated.");
+  /* ---------- GUIDED ARROWS ---------- */
+window.onload = () => {
+  if (!sessionStorage.getItem("guideShown")) {
+    document.getElementById("guideOverlay").style.display = "block";
+    document.body.style.overflow = "hidden";
+  }
+};
+
+function closeGuide() {
+  document.getElementById("guideOverlay").style.display = "none";
+  document.body.style.overflow = "auto";
+  sessionStorage.setItem("guideShown", "yes");
+}
+
 }
