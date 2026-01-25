@@ -164,6 +164,10 @@ function closeGuide() {
   document.body.style.overflow = "auto";
   sessionStorage.setItem("guideShown", "yes");
 }
+const hint = document.getElementById("assistantHint");
+if (hint) {
+  hint.innerText = "💡 Tip: Try pasting a news article, ad copy, or viral post.";
+}
 
 
 
