@@ -321,4 +321,43 @@ button:hover {
   border-bottom: 1px solid red;
   padding-bottom: 5px;
 }
+/* GUIDE OVERLAY */
+.guide-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+  display: none;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* ARROWS */
+.guide-arrow {
+  position: absolute;
+  color: #00ffcc;
+  font-size: 18px;
+  animation: floatArrow 1.5s infinite ease-in-out;
+  text-shadow: 0 0 10px #00ffcc;
+}
+
+/* FLOAT ANIMATION */
+@keyframes floatArrow {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+/* BUTTON */
+.guide-btn {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 30px;
+  background: #00ffcc;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
