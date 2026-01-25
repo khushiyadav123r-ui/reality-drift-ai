@@ -23,11 +23,14 @@ function enterApp() {
 /* ---------------- ENTER HOME (HOMEPAGE OVERLAY) ---------------- */
 function enterHome() {
   const home = document.getElementById("homeOverlay");
-  if (home) home.style.display = "none";
+  if (home) {
+    home.style.display = "none";
+    home.style.pointerEvents = "none";
+  }
 
-  const analyzeBtn = document.getElementById("analyzeBtn");
-  if (analyzeBtn) analyzeBtn.disabled = false;
+  document.body.style.overflow = "auto";
 }
+
 
 /* ---------------- MAIN ANALYSIS FUNCTION ---------------- */
 function analyze() {
