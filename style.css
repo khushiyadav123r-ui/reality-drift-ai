@@ -343,6 +343,23 @@ button:hover {
 body {
   overflow: auto;
 }
+.assistant-hint {
+  text-align: center;
+  margin: 12px auto;
+  padding: 10px 16px;
+  max-width: 700px;
+  background: rgba(0,255,255,0.08);
+  border: 1px solid #00ffff55;
+  color: #00ffff;
+  font-size: 14px;
+  border-radius: 8px;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 8px #00ffff33; }
+  to { box-shadow: 0 0 16px #00ffff88; }
+}
 
 
 
