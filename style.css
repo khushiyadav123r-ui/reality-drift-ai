@@ -360,6 +360,42 @@ body {
   from { box-shadow: 0 0 8px #00ffff33; }
   to { box-shadow: 0 0 16px #00ffff88; }
 }
+.ai-log {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 280px;
+  height: 300px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #00ffff55;
+  border-radius: 10px;
+  padding: 12px;
+  font-family: monospace;
+  font-size: 13px;
+  color: #00ffff;
+  overflow-y: auto;
+  box-shadow: 0 0 20px #00ffff44;
+  z-index: 999;
+}
+
+.ai-log h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  text-align: center;
+  color: #00ffff;
+  border-bottom: 1px solid #00ffff44;
+  padding-bottom: 6px;
+}
+
+#logContent p {
+  margin: 6px 0;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 
 
