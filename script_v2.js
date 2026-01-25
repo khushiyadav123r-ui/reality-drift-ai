@@ -134,4 +134,16 @@ function analyze() {
     trustText.innerText = "✅ Generally Trustworthy";
     trustCard.classList.add("trust-safe");
   }
+  // FIRST TIME GUIDE (SHOW ONCE)
+window.onload = () => {
+  if (!sessionStorage.getItem("guideShown")) {
+    document.getElementById("guideOverlay").style.display = "flex";
+  }
+};
+
+function closeGuide() {
+  document.getElementById("guideOverlay").style.display = "none";
+  sessionStorage.setItem("guideShown", "yes");
+}
+
 }
