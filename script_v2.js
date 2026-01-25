@@ -31,6 +31,9 @@ function enterHome() {
 
 /* ---------------- MAIN ANALYSIS FUNCTION ---------------- */
 function analyze() {
+  document.getElementById("logContent").innerHTML = "";
+addLog("🧠 Initializing analysis engine...");
+
   const inputEl = document.getElementById("contentInput");
 
   if (!inputEl || inputEl.value.trim() === "") {
@@ -53,6 +56,8 @@ if (hint) {
   } else if (text.includes("love") || text.includes("happy")) {
     emotion = "Positive";
   }
+  addLog("❤️ Emotional signals analyzed → " + emotion);
+
 
   /* -------- BIAS DETECTION -------- */
   let bias = "Neutral";
@@ -61,6 +66,7 @@ if (hint) {
   } else if (text.includes("government") || text.includes("election")) {
     bias = "Political";
   }
+addLog("⚠️ Bias patterns detected → " + bias);
 
   /* -------- EXPECTATION DRIFT -------- */
   let expectation = "Realistic Expectations";
@@ -72,6 +78,8 @@ if (hint) {
   ) {
     expectation = "Unrealistic Expectations";
   }
+  addLog("🎯 Expectation realism evaluated → " + expectation);
+
 
   /* -------- REALITY SCORE -------- */
   let score = 8;
@@ -79,6 +87,8 @@ if (hint) {
   if (bias === "Commercial") score -= 2;
   if (expectation === "Unrealistic Expectations") score -= 3;
   if (score < 1) score = 1;
+  addLog("📊 Calculating Reality Score...");
+
 
   /* -------- OUTPUT TEXT -------- */
   document.getElementById("emotion").innerHTML =
@@ -138,6 +148,8 @@ if (hint) {
     trustText.innerText = "✅ Generally Trustworthy";
     trustCard.classList.add("trust-safe");
   }
+  addLog("✅ Analysis complete. Trust level generated.");
+
   if (hint) {
   hint.innerText = "✅ Analysis complete. Review each card to understand the results.";
 }
