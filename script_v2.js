@@ -142,8 +142,15 @@ window.onload = () => {
 };
 
 function closeGuide() {
-  document.getElementById("guideOverlay").style.display = "none";
+  const guide = document.getElementById("guideOverlay");
+  if (guide) {
+    guide.style.display = "none";
+    guide.style.pointerEvents = "none";
+  }
+
+  document.body.style.overflow = "auto";
   sessionStorage.setItem("guideShown", "yes");
 }
+
 
 }
