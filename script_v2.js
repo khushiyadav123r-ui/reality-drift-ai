@@ -136,13 +136,18 @@ function analyze() {
   }
   // FIRST TIME GUIDE (SHOW ONCE)
 window.onload = () => {
-  if (!sessionStorage.getItem("guideShown")) {
-    document.getElementById("guideOverlay").style.display = "flex";
+  const guide = document.getElementById("guideOverlay");
+
+  if (guide && !sessionStorage.getItem("guideShown")) {
+    guide.style.display = "flex";
+    guide.style.pointerEvents = "auto";
+    document.body.style.overflow = "hidden";
   }
 };
 
 function closeGuide() {
   const guide = document.getElementById("guideOverlay");
+
   if (guide) {
     guide.style.display = "none";
     guide.style.pointerEvents = "none";
@@ -151,6 +156,7 @@ function closeGuide() {
   document.body.style.overflow = "auto";
   sessionStorage.setItem("guideShown", "yes");
 }
+
 
 
 }
