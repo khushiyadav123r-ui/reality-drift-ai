@@ -37,6 +37,10 @@ function analyze() {
     alert("Please paste some content first");
     return;
   }
+const hint = document.getElementById("assistantHint");
+if (hint) {
+  hint.innerText = "🧠 Analyzing content for emotion, bias, and reality drift...";
+}
 
   const text = inputEl.value.toLowerCase();
 
