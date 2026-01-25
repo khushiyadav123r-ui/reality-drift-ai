@@ -112,19 +112,22 @@
     <p>🟢 System ready.</p>
   </div>
 </div>
-  <!-- GUIDED ARROWS OVERLAY -->
+  <!-- SMART GUIDE -->
 <div id="guideOverlay" class="guide-overlay">
 
-  <div class="guide-arrow" style="top: 55%; left: 20%;">
-    ➜ Paste your article here
+  <div class="guide-step" id="step-input">
+    <div class="arrow">⬇</div>
+    <p>Paste article or content here</p>
   </div>
 
-  <div class="guide-arrow" style="top: 70%; left: 45%;">
-    ➜ Click ANALYZE to start AI scan
+  <div class="guide-step" id="step-button">
+    <div class="arrow">⬇</div>
+    <p>Click Analyze to start AI scan</p>
   </div>
 
-  <div class="guide-arrow" style="top: 40%; right: 10%;">
-    ➜ View AI results here
+  <div class="guide-step" id="step-output">
+    <div class="arrow">⬆</div>
+    <p>AI results appear here</p>
   </div>
 
   <button class="guide-btn" onclick="closeGuide()">Got it</button>
