@@ -47,6 +47,8 @@ function analyze() {
   if (!input || input.value.trim() === "") {
     alert("Please paste some content first");
     return;
+    startAnalysisEffects(score);
+
   }
 
   document.getElementById("logContent").innerHTML = "";
