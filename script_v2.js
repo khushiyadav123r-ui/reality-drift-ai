@@ -47,8 +47,6 @@ function analyze() {
   if (!input || input.value.trim() === "") {
     alert("Please paste some content first");
     return;
-    startAnalysisEffects(score);
-
   }
 
   document.getElementById("logContent").innerHTML = "";
@@ -133,21 +131,4 @@ function analyze() {
   }
 
   addLog("✅ Analysis complete. Trust level generated.");
-  window.onload = () => {
-  if (!sessionStorage.getItem("guideShown")) {
-    document.getElementById("guideOverlay").style.display = "block";
-    document.body.style.overflow = "hidden";
-
-    // Auto scroll to top so arrows always visible
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-};
-
-function closeGuide() {
-  document.getElementById("guideOverlay").style.display = "none";
-  document.body.style.overflow = "auto";
-  sessionStorage.setItem("guideShown", "yes");
-}
-
-
 }
