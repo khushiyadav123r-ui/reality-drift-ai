@@ -1,5 +1,15 @@
+function logSystem(message) {
+  const log = document.getElementById("logOutput");
+  const line = document.createElement("div");
+  line.className = "log-line";
+  line.textContent = `> ${message}`;
+  log.appendChild(line);
+  log.scrollTop = log.scrollHeight;
+}
 function analyze() {
   const input = document.getElementById("contentInput").value.toLowerCase();
+   logSystem("Analysis started");
+logSystem("Parsing content");
   if (!input) {
     alert("Paste some content first");
     return;
@@ -21,6 +31,10 @@ function analyze() {
   if (bias === "Commercial") score -= 2;
   if (expectation === "Unrealistic") score -= 3;
   if (score < 1) score = 1;
+  logSystem(`Emotion detected: ${emotion}`);
+logSystem(`Bias detected: ${bias}`);
+logSystem(`Expectation drift: ${expectation}`);
+logSystem(`Reality score computed: ${score}/10`);
 
   document.getElementById("emotion").innerHTML =
     `<h3>Emotional Drift</h3><p>${emotion}</p>`;
@@ -40,6 +54,8 @@ function analyze() {
   const trustText = document.getElementById("trustText");
 
   trustCard.className = "card centered";
+  logSystem("Trust classification applied");
+
 
   if (score <= 3) {
     trustText.innerText = "❌ Highly Manipulative";
@@ -56,6 +72,9 @@ function analyze() {
   const meterFill = document.getElementById("meterFill");
   const scoreText = document.getElementById("scoreText");
   meterFill.style.width = "0%";
+  logSystem("Animating score meter");
+logSystem("Analysis complete");
+
 
   const interval = setInterval(() => {
     current++;
