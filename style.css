@@ -459,36 +459,20 @@ button:hover {
   from { box-shadow: 0 0 15px rgba(255,0,0,0.4); }
   to { box-shadow: 0 0 35px rgba(255,0,0,0.9); }
 }
+
 /* ---------------- AI LOG LAYOUT FIX ---------------- */
-
-
-/* ---------- OUTPUT LAYOUT ---------- */
 
 .output {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.analysis-results {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
-/* Make wide cards span full width */
-#aiInsightCard,
-#trustCard {
-  grid-column: span 2;
-}
-
-/* ---------- SYSTEM LOG ---------- */
-
 .ai-log-card {
   position: sticky;
-  top: 90px;
-  max-height: 70vh;
-  overflow-y: auto;
+  top: 80px;
+  height: fit-content;
 }
+
+
 
