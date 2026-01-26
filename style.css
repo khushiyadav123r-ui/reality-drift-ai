@@ -74,9 +74,7 @@ textarea {
   gap: 20px;
   padding: 40px;
   perspective: 1200px;
-  justify-items: stretch; /* keep normal cards aligned */
 }
-
 
 .card {
   background: linear-gradient(180deg, #080808, #121212);
@@ -98,10 +96,9 @@ textarea {
 }
 
 .centered {
-  grid-column: 1 / -1;     /* span full row */
-  justify-self: center;   /* TRUE horizontal centering */
-  width: 100%;
+  grid-column: 1 / -1;
   max-width: 420px;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -149,92 +146,3 @@ textarea {
   75% { text-shadow: -2px 2px magenta; }
   100% { text-shadow: 2px 2px red; }
 }
-/* ===============================
-   🧱 APP LAYOUT
-   =============================== */
-
-.app-layout {
-  display: grid;
-  grid-template-columns: 1fr 320px; /* main + log */
-  gap: 20px;
-}
-
-/* ===============================
-   MAIN CONTENT
-   =============================== */
-
-.main-content {
-  min-width: 0;
-}
-
-/* ===============================
-   AI SYSTEM LOG PANEL
-   =============================== */
-
-.system-log {
-  background: linear-gradient(180deg, #050505, #0c0c0c);
-  border-left: 1px solid var(--neon-red);
-  padding: 20px;
-  height: 100vh;
-  overflow-y: auto;
-  box-shadow: inset 0 0 20px rgba(255, 92, 92, 0.2);
-}
-
-.system-log h3 {
-  text-align: center;
-  margin-bottom: 15px;
-  font-size: 1rem;
-}
-
-#logOutput {
-  font-family: monospace;
-  font-size: 0.85rem;
-  color: var(--neon-red-soft);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.log-line {
-  opacity: 0;
-  animation: logFade 0.4s forwards;
-}
-
-@keyframes logFade {
-  to { opacity: 1; }
-}
-
-/* ===============================
-   CENTER MODULE
-   =============================== */
-
-.center-module {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding-bottom: 60px;
-}
-
-.center-module .card {
-  width: 100%;
-  max-width: 420px;
-  text-align: center;
-}
-
-/* ===============================
-   RESPONSIVE
-   =============================== */
-
-@media (max-width: 900px) {
-  .app-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .system-log {
-    height: auto;
-    border-left: none;
-    border-top: 1px solid var(--neon-red);
-  }
-}
-
