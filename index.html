@@ -65,46 +65,36 @@
 <!-- ================= OUTPUT ================= -->
 <section class="output">
 
-  <!-- LEFT SIDE -->
-  <div class="left-panel">
+  <!-- LEFT GRID -->
+  <div class="analysis-grid">
+    <div class="card" id="truth"></div>
+    <div class="card" id="emotion"></div>
 
-    <!-- METRICS GRID -->
-    <div class="metrics-grid">
-      <div class="card" id="truth"></div>
-      <div class="card" id="emotion"></div>
-      <div class="card" id="bias"></div>
-      <div class="card" id="expectation"></div>
-    </div>
+    <div class="card" id="bias"></div>
+    <div class="card" id="expectation"></div>
 
-    <!-- AI INSIGHT -->
-    <div class="card insight-card" id="aiInsightCard">
+    <div class="card" id="aiInsightCard">
       <h3>AI Insight</h3>
       <p id="aiInsight">—</p>
     </div>
 
-    <!-- SCORE -->
-    <div class="card score-card">
+    <div class="card" id="scoreTrustCard">
       <div id="scoreText">Reality Score: —</div>
       <div class="meter">
         <div id="meterFill"></div>
       </div>
-    </div>
-
-    <!-- TRUST -->
-    <div class="card trust-card" id="trustCard">
-      <h3>Final Trust Indicator</h3>
       <p id="trustText">—</p>
     </div>
-
   </div>
 
-  <!-- RIGHT SIDE -->
+  <!-- SYSTEM LOG -->
   <div class="card ai-log-card">
     <h3>AI System Log</h3>
     <div id="aiLog"></div>
   </div>
 
 </section>
+
 
 
 
