@@ -1,20 +1,9 @@
-function logSystem(message) {
-  const log = document.getElementById("logOutput");
-  const line = document.createElement("div");
-  line.className = "log-line";
-  line.textContent = `> ${message}`;
-  log.appendChild(line);
-  log.scrollTop = log.scrollHeight;
-}
 function analyze() {
   const input = document.getElementById("contentInput").value.toLowerCase();
-   logSystem("Analysis started");
-logSystem("Parsing content");
   if (!input) {
     alert("Paste some content first");
     return;
   }
-
   let emotion = "Neutral";
   if (input.includes("guarantee") || input.includes("rich")) emotion = "Hype";
   if (input.includes("fear") || input.includes("danger")) emotion = "Fear";
@@ -31,11 +20,6 @@ logSystem("Parsing content");
   if (bias === "Commercial") score -= 2;
   if (expectation === "Unrealistic") score -= 3;
   if (score < 1) score = 1;
-  logSystem(`Emotion detected: ${emotion}`);
-logSystem(`Bias detected: ${bias}`);
-logSystem(`Expectation drift: ${expectation}`);
-logSystem(`Reality score computed: ${score}/10`);
-
   document.getElementById("emotion").innerHTML =
     `<h3>Emotional Drift</h3><p>${emotion}</p>`;
   document.getElementById("bias").innerHTML =
@@ -54,9 +38,6 @@ logSystem(`Reality score computed: ${score}/10`);
   const trustText = document.getElementById("trustText");
 
   trustCard.className = "card centered";
-  logSystem("Trust classification applied");
-
-
   if (score <= 3) {
     trustText.innerText = "❌ Highly Manipulative";
     trustCard.classList.add("trust-danger");
@@ -72,10 +53,6 @@ logSystem(`Reality score computed: ${score}/10`);
   const meterFill = document.getElementById("meterFill");
   const scoreText = document.getElementById("scoreText");
   meterFill.style.width = "0%";
-  logSystem("Animating score meter");
-logSystem("Analysis complete");
-
-
   const interval = setInterval(() => {
     current++;
     scoreText.innerText = `Reality Score: ${current} / 10`;
