@@ -385,4 +385,15 @@ button:hover {
   inset: 0;
   z-index: -2;
   pointer-events: none;
-  background: radial-gradient(circle
+  background: radial-gradient(circle at center, #050505 0%, #000 70%);
+}
+
+.matrix-bg {
+  animation: flicker 6s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.08; }
+  50% { opacity: 0.12; }
+  100% { opacity: 0.1; }
+}
