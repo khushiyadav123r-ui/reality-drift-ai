@@ -459,3 +459,17 @@ button:hover {
   from { box-shadow: 0 0 15px rgba(255,0,0,0.4); }
   to { box-shadow: 0 0 35px rgba(255,0,0,0.9); }
 }
+/* ---------------- AI LOG LAYOUT FIX ---------------- */
+
+.output {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.ai-log-card {
+  position: sticky;
+  top: 80px;
+  height: fit-content;
+}
+
