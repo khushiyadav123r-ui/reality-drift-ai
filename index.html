@@ -65,41 +65,40 @@
 <!-- ================= OUTPUT ================= -->
 <section class="output">
 
-  <div class="card" id="truth">
-    <h3>Truth Drift</h3>
-    <p>Measures deviation from factual reality.</p>
-  </div>
+  <!-- LEFT SIDE RESULTS -->
+  <div class="analysis-results">
 
-  <div class="card" id="emotion">
-    <h3>Emotional Drift</h3>
-    <p>Detects emotional manipulation.</p>
-  </div>
+    <div class="card" id="truth"></div>
+    <div class="card" id="emotion"></div>
+    <div class="card" id="bias"></div>
+    <div class="card" id="expectation"></div>
 
-  <div class="card" id="bias">
-    <h3>Bias Detection</h3>
-    <p>Identifies hidden influence.</p>
-  </div>
-
-  <div class="card" id="expectation">
-    <h3>Expectation Drift</h3>
-    <p>Finds unrealistic promises.</p>
-  </div>
-
-  <div class="card">
-    <h3>AI Insight</h3>
-    <p id="aiInsight">—</p>
-  </div>
-
-  <div class="card trust-card" id="trustCard">
-    <h3>Final Trust Indicator</h3>
-    <p id="trustText">—</p>
-  </div>
-
-  <div class="card">
-    <div id="scoreText">Reality Score: —</div>
-    <div class="meter">
-      <div id="meterFill"></div>
+    <!-- SCORE -->
+    <div class="card">
+      <div id="scoreText"></div>
+      <div class="meter">
+        <div id="meterFill"></div>
+      </div>
     </div>
+
+    <!-- AI INSIGHT (MOVED HERE ✅) -->
+    <div class="card" id="aiInsightCard">
+      <h3>AI Insight</h3>
+      <p id="aiInsight">—</p>
+    </div>
+
+    <!-- TRUST -->
+    <div class="card trust-card" id="trustCard">
+      <h3>Final Trust Indicator</h3>
+      <p id="trustText">—</p>
+    </div>
+
+  </div>
+
+  <!-- RIGHT SIDE SYSTEM LOG -->
+  <div class="card ai-log-card">
+    <h3>AI System Log</h3>
+    <div id="aiLog"></div>
   </div>
 
 </section>
