@@ -4,6 +4,7 @@ function analyze() {
     alert("Paste some content first");
     return;
   }
+
   let emotion = "Neutral";
   if (input.includes("guarantee") || input.includes("rich")) emotion = "Hype";
   if (input.includes("fear") || input.includes("danger")) emotion = "Fear";
@@ -20,6 +21,7 @@ function analyze() {
   if (bias === "Commercial") score -= 2;
   if (expectation === "Unrealistic") score -= 3;
   if (score < 1) score = 1;
+
   document.getElementById("emotion").innerHTML =
     `<h3>Emotional Drift</h3><p>${emotion}</p>`;
   document.getElementById("bias").innerHTML =
@@ -38,6 +40,7 @@ function analyze() {
   const trustText = document.getElementById("trustText");
 
   trustCard.className = "card centered";
+
   if (score <= 3) {
     trustText.innerText = "❌ Highly Manipulative";
     trustCard.classList.add("trust-danger");
@@ -53,6 +56,7 @@ function analyze() {
   const meterFill = document.getElementById("meterFill");
   const scoreText = document.getElementById("scoreText");
   meterFill.style.width = "0%";
+
   const interval = setInterval(() => {
     current++;
     scoreText.innerText = `Reality Score: ${current} / 10`;
