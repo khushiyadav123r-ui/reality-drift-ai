@@ -74,7 +74,9 @@ textarea {
   gap: 20px;
   padding: 40px;
   perspective: 1200px;
+  justify-items: stretch; /* keep normal cards aligned */
 }
+
 
 .card {
   background: linear-gradient(180deg, #080808, #121212);
@@ -96,9 +98,10 @@ textarea {
 }
 
 .centered {
-  grid-column: 1 / -1;
+  grid-column: 1 / -1;     /* span full row */
+  justify-self: center;   /* TRUE horizontal centering */
+  width: 100%;
   max-width: 420px;
-  margin: 0 auto;
   text-align: center;
 }
 
