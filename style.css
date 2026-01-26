@@ -460,19 +460,68 @@ button:hover {
   to { box-shadow: 0 0 35px rgba(255,0,0,0.9); }
 }
 
-/* ---------------- AI LOG LAYOUT FIX ---------------- */
+/* ================= CLEAN DASHBOARD LAYOUT ================= */
 
 .output {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 30px;
+  padding: 30px;
+  align-items: start;
+}
+
+/* LEFT PANEL STACK */
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* METRICS 2x2 GRID */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
+/* UNIFORM CARD HEIGHT */
+.metrics-grid .card {
+  min-height: 110px;
+}
+
+/* AI INSIGHT */
+.insight-card {
+  border-left: 4px solid cyan;
+  background: linear-gradient(
+    to right,
+    rgba(0,255,255,0.08),
+    rgba(0,0,0,0.6)
+  );
+}
+
+/* SCORE CARD */
+.score-card {
+  border-left: 4px solid red;
+}
+
+/* SYSTEM LOG */
 .ai-log-card {
   position: sticky;
-  top: 80px;
-  height: fit-content;
+  top: 90px;
+  max-height: 75vh;
+  overflow-y: auto;
+  background: rgba(0,0,0,0.85);
+  border: 1px solid rgba(0,255,255,0.3);
 }
+
+/* SCROLLBAR (HACKER STYLE) */
+.ai-log-card::-webkit-scrollbar {
+  width: 6px;
+}
+.ai-log-card::-webkit-scrollbar-thumb {
+  background: cyan;
+}
+
 
 
 
