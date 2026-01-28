@@ -18,15 +18,18 @@ typeEffect();
 function enterApp() {
   const overlay = document.getElementById("welcomeOverlay");
   if (overlay) overlay.style.display = "none";
+  function enterApp() {
+  document.getElementById("welcomeOverlay").style.display = "none";
+
+  // SHOW ABOUT PANEL ON START-ANALYSIS PAGE
+  const about = document.getElementById("aboutPanel");
+  if (about) about.style.display = "block";
 }
 
 /* ---------------- ENTER HOME (HOMEPAGE OVERLAY) ---------------- */
 function enterHome() {
   const home = document.getElementById("homeOverlay");
   if (home) home.style.display = "none";
-  // SHOW ABOUT PANEL WHEN ANALYSIS STARTS
-  const about = document.getElementById("aboutPanel");
-  if (about) about.style.display = "block";
 }
 
 
