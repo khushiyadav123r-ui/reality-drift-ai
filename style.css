@@ -324,34 +324,61 @@ button:hover {
   0%,100% { box-shadow: 0 0 10px #0f0; }
   50% { box-shadow: 0 0 25px #0f0; }
 }
+/* ABOUT SIDEBAR */
 .about-panel {
+  position: sticky;
+  top: 100px;
   width: 260px;
+  height: fit-content;
+  padding: 18px;
+  margin-right: 25px;
+
   background: rgba(0, 0, 0, 0.85);
-  border-left: 2px solid #00ff66;
+  border: 1px solid #ff2b2b;
+  box-shadow:
+    0 0 18px rgba(255, 0, 0, 0.6),
+    inset 0 0 12px rgba(255, 0, 0, 0.25);
 
-  padding: 16px;
   font-family: monospace;
-  color: #aaffcc;
-
-  box-shadow: inset 0 0 15px rgba(0, 255, 100, 0.2);
+  color: #ff4d4d;
+  animation: slideIn 0.8s ease-out;
 }
 
 .about-panel h3 {
-  color: #00ff66;
-  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid red;
+  padding-bottom: 6px;
+}
+
+.about-panel span {
+  color: #fff;
 }
 
 .about-panel ul {
+  margin: 12px 0;
   padding-left: 18px;
-  margin: 10px 0;
 }
 
 .about-panel li {
   margin-bottom: 6px;
-  font-size: 13px;
+  list-style: none;
 }
 
-.about-note {
+.about-panel .note {
   font-size: 12px;
-  opacity: 0.75;
+  opacity: 0.8;
+  margin-top: 10px;
 }
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
