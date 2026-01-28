@@ -25,9 +25,11 @@ function enterHome() {
   const home = document.getElementById("homeOverlay");
   if (home) home.style.display = "none";
 
-  const analyzeBtn = document.getElementById("analyzeBtn");
-  if (analyzeBtn) analyzeBtn.disabled = false;
+  // SHOW ABOUT PANEL WHEN ANALYSIS STARTS
+  const about = document.getElementById("aboutPanel");
+  if (about) about.style.display = "block";
 }
+
 
 /* ---------------- MAIN ANALYSIS FUNCTION ---------------- */
 function analyze() {
