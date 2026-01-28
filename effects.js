@@ -1,92 +1,129 @@
-/* ================= CYBER BACKGROUND ================= */
-const canvas = document.getElementById("cyberCanvas");
-const ctx = canvas.getContext("2d");
+/* ===============================
+   CYBER 3D CARD TILT EFFECT
+================================ */
 
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener("resize", resize);
+document.querySelectorAll(".card").forEach(card => {
+  card.addEventListener("mousemove", e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-const particles = [];
-for (let i = 0; i < 140; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    vx: (Math.random() - 0.5) * 0.3,
-    vy: (Math.random() - 0.5) * 0.3,
-    size: Math.random() * 2 + 0.5
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / 12) * -1;
+    const rotateY = (x - centerX) / 12;
+
+    card.style.transform = `
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+      scale(1.03)
+    `;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "rotateX(0) rotateY(0) scale(1)";
+  });
+});
+
+
+/* ===============================
+   ANALYZE BUTTON SCAN EFFECT
+================================ */
+
+const analyzeBtn = document.querySelector("button");
+
+if (analyzeBtn) {
+  analyzeBtn.addEventListener("click", () => {
+    const scan = document.getElementById("scanOverlay");
+    if (!scan) return;
+
+    scan.style.animation = "none";
+    scan.offsetHeight; // reset
+    scan.style.animation = "scan 1.2s linear";
   });
 }
 
-function drawGrid() {
-  ctx.strokeStyle = "rgba(0,255,200,0.03)";
-  for (let x = 0; x < canvas.width; x += 70) {
-    ctx.beginPath();
-    ctx.moveTo(x, 0);
-    ctx.lineTo(x, canvas.height);
-    ctx.stroke();
-  }
-  for (let y = 0; y < canvas.height; y += 70) {
-    ctx.beginPath();
-    ctx.moveTo(0, y);
-    ctx.lineTo(canvas.width, y);
-    ctx.stroke();
-  }
-}
 
-function animateBG() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawGrid();
+/* ===============================
+   FLOATING CYBER PARTICLES
+================================ */
+
+const particleCanvas = document.createElement("canvas");
+particleCanvas.style.position = "fixed";
+particleCanvas.style.inset = "0";
+particleCanvas.style.pointerEvents = "none";
+particleCanvas.style.zIndex = "-1";
+document.body.appendChild(particleCanvas);
+
+const ctx = particleCanvas.getContext("2d");
+
+let w, h;
+function resizeCanvas() {
+  w = particleCanvas.width = window.innerWidth;
+  h = particleCanvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+const particles = Array.from({ length: 40 }, () => ({
+  x: Math.random() * w,
+  y: Math.random() * h,
+  r: Math.random() * 1.5 + 0.5,
+  vx: Math.random() * 0.3,
+  vy: Math.random() * 0.3
+}));
+
+function drawParticles() {
+  ctx.clearRect(0, 0, w, h);
+  ctx.fillStyle = "rgba(255,0,0,0.35)";
 
   particles.forEach(p => {
     p.x += p.vx;
     p.y += p.vy;
 
-    if (p.x < 0) p.x = canvas.width;
-    if (p.x > canvas.width) p.x = 0;
-    if (p.y < 0) p.y = canvas.height;
-    if (p.y > canvas.height) p.y = 0;
+    if (p.x > w) p.x = 0;
+    if (p.y > h) p.y = 0;
 
-    ctx.fillStyle = "rgba(0,255,200,0.6)";
-    ctx.fillRect(p.x, p.y, p.size, p.size);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fill();
   });
 
-  requestAnimationFrame(animateBG);
+  requestAnimationFrame(drawParticles);
 }
-animateBG();
+drawParticles();
 
-/* ================= AI TERMINAL LOG ================= */
-function addLog(text) {
-  const log = document.getElementById("aiLog");
-  if (!log) return;
 
-  const line = document.createElement("div");
-  line.textContent = "> " + text;
-  log.appendChild(line);
-  log.scrollTop = log.scrollHeight;
+/* ===============================
+   AI SYSTEM HEARTBEAT GLOW
+================================ */
+
+const logBox = document.querySelector(".ai-log-card");
+if (logBox) {
+  setInterval(() => {
+    logBox.style.boxShadow =
+      "0 0 20px rgba(255,0,0,0.8)";
+    setTimeout(() => {
+      logBox.style.boxShadow =
+        "0 0 10px rgba(255,0,0,0.4)";
+    }, 300);
+  }, 2200);
 }
 
-/* ================= MOUSE GLOW ================= */
-document.addEventListener("mousemove", e => {
-  const glow = document.getElementById("mouseGlow");
-  glow.style.left = e.clientX + "px";
-  glow.style.top = e.clientY + "px";
-});
 
-/* ================= ANALYSIS HOOK ================= */
-window.startAnalysisEffects = function(score) {
-  addLog("Initializing AI engine...");
-  addLog("Parsing linguistic signals...");
-  addLog("Evaluating emotional bias...");
-  addLog("Computing reality score...");
+/* ===============================
+   SAFE GLITCH FLICKER (TEXT)
+================================ */
 
-  if (score <= 3) {
-    addLog("⚠ High manipulation detected!");
-    document.body.classList.add("alert-mode");
-  } else {
-    document.body.classList.remove("alert-mode");
-    addLog("Analysis stable. Content within safe bounds.");
-  }
-};
+setInterval(() => {
+  document.querySelectorAll("h1, h2").forEach(el => {
+    el.style.textShadow = `
+      2px 0 red,
+      -2px 0 cyan
+    `;
+    setTimeout(() => {
+      el.style.textShadow = "";
+    }, 120);
+  });
+}, 5000);
