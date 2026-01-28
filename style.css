@@ -381,4 +381,7 @@ button:hover {
     opacity: 1;
   }
 }
+.about-panel {
+  display: none;
+}
 
